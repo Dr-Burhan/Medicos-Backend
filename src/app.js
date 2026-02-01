@@ -36,4 +36,8 @@ app.use("/api/collections", collectionRoutes)
 app.use("/api/products", productRoutes)
 app.use("/api/cart", cartRoutes)
 
+app.get('/', (req, res) => {
+    res.send('Hello from the backend!');
+});
+
 export { app }
