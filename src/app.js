@@ -1,10 +1,8 @@
 import express from "express";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import path from "path";
 
 const app = express();
-const __dirname = path.resolve();
 
 // ================= CORS =================
 app.use(
@@ -41,13 +39,5 @@ app.get('/', (req, res) => {
     res.send('Backend is Running!');
 });
 
-// ================= FRONTEND (PRODUCTION) =================
-  
-app.use(express.static(path.join(__dirname, "dist")));
-
-// ================= SPA FALLBACK =================
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "dist", "index.html"));
-});
 
 export { app };
