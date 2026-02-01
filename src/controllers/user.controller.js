@@ -47,7 +47,7 @@ export const registerUser = async (req, res) => {
     // 6. Set cookies
     res.cookie("accessToken", accessToken, {
       httpOnly: false, 
-      secure: true,  
+      secure: false,  
       sameSite: "strict",
       maxAge: 12 * 60 * 60 * 1000 // 12 hours
 
@@ -55,7 +55,7 @@ export const registerUser = async (req, res) => {
 
     res.cookie("refreshToken", refreshToken, {
       httpOnly: false,
-      secure: true,
+      secure: false,
       sameSite: "strict",
       maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
     });
@@ -114,7 +114,7 @@ export const loginUser = async (req, res) => {
 
       res.cookie("accessToken", accessToken, {
     httpOnly: false, 
-    secure: true,  
+    secure: false,  
     sameSite: "strict",
 maxAge: 12 * 60 * 60 * 1000 // 12 hours
   });
@@ -122,7 +122,7 @@ maxAge: 12 * 60 * 60 * 1000 // 12 hours
   // ✅ store refresh token in cookie
   res.cookie("refreshToken", refreshToken, {
     httpOnly: false,
-    secure: true,
+    secure: false,
     sameSite: "strict",
     maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
   });
