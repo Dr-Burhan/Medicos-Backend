@@ -46,17 +46,17 @@ export const registerUser = async (req, res) => {
 
     // 6. Set cookies
     res.cookie("accessToken", accessToken, {
-      httpOnly: false, 
-      secure: false,  
-      sameSite: "strict",
+      httpOnly: true, 
+      secure: true,  
+      sameSite: "none",
       maxAge: 12 * 60 * 60 * 1000 // 12 hours
 
     });
 
     res.cookie("refreshToken", refreshToken, {
-      httpOnly: false,
-      secure: false,
-      sameSite: "strict",
+      httpOnly: true,
+      secure: true,
+      sameSite: "none",
       maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
     });
 
@@ -113,17 +113,17 @@ export const loginUser = async (req, res) => {
     await user.save();
 
       res.cookie("accessToken", accessToken, {
-    httpOnly: false, 
-    secure: false,  
-    sameSite: "strict",
+    httpOnly: true, 
+    secure: true,  
+    sameSite: "none",
 maxAge: 12 * 60 * 60 * 1000 // 12 hours
   });
 
   // ✅ store refresh token in cookie
   res.cookie("refreshToken", refreshToken, {
-    httpOnly: false,
-    secure: false,
-    sameSite: "strict",
+    httpOnly: true,
+    secure: true,
+    sameSite: "none",
     maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
   });
     res.json({
@@ -149,14 +149,14 @@ export const logoutUser = async (req, res) => {
   try {
     // Clear cookies
     res.clearCookie("accessToken", {
-      httpOnly: false,
-      secure: false,
-      sameSite: "strict",
+      httpOnly: true,
+      secure: true,
+      sameSite: "none",
     });
     res.clearCookie("refreshToken", {
-      httpOnly: false,
-      secure: false,
-      sameSite: "strict",
+      httpOnly: true,
+      secure: true,
+      sameSite: "none",
     });
 
     res.status(200).json({
